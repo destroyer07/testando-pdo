@@ -8,7 +8,7 @@ services:
     volumes:
       - ./:/var/www/html
     environment:
-      XDEBUG_CONFIG: remote_host=host.docker.internal
+      XDEBUG_CONFIG: remote_host=leandro
   mysql:
     container_name: pdo-db
     image: mysql:5
