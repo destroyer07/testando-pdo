@@ -1,4 +1,4 @@
-<?php require_once 'models/Categoria.php' ?>
+<?php require_once 'global.php' ?>
 <?php
 session_start();
 $mensagem = $_SESSION['mensagem'];
@@ -12,10 +12,11 @@ if (isset($_GET['id'])) {
     $categoria->buscar();
 }
 
+var_dump(Produto::listar());
+
 ?>
 
 <section>
-
     <?= $mensagem ? '<p>'. $mensagem. '</p>' : '' ?>
 
     <h2>Categoria</h2>
@@ -46,5 +47,32 @@ if (isset($_GET['id'])) {
         </tr>
         <?php endforeach; ?>
 
+    </table>
+</section>
+
+<section>
+    <h2>Produto</h2>
+
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Preço</th>
+            <th>Quantidade</th>
+            <th>Categoria</th>
+        </tr>
+        <?php foreach (Produto::listar() as $produto): ?>
+            <tr>
+                <td><?= $produto['id'] ?></td>
+                <td><?= $produto['nome'] ?></td>
+                <td><?= $produto['preco'] ?></td>
+                <td><?= $produto['quantidade'] ?></td>
+                <td>
+                    <a href="?id=<?= $produto['categoria_id'] ?>" title="Editar <?= $produto['categoria'] ?>">
+                        <?= $produto['categoria'] ?>
+                    </a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
     </table>
 </section>

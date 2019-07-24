@@ -1,5 +1,5 @@
 <?php
-require_once 'models/Categoria.php';
+require_once 'global.php';
 
 $categoria = new Categoria();
 
